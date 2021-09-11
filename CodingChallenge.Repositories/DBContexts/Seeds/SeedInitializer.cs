@@ -32,11 +32,11 @@ namespace CodingChallenge.Repositories.DBContexts.Seeds
                 context.Departments.Add(new Models.Department() { ID = 1, Name = "Books" });
                 context.Departments.Add(new Models.Department() { ID = 2, Name = "Food" });
                 context.Departments.Add(new Models.Department() { ID = 3, Name = "Medicals" });
-                context.Departments.Add(new Models.Department() { ID = 4, Name = "Imported", TaxID = 2 });
-                context.Departments.Add(new Models.Department() { ID = 4, Name = "Music", TaxID = 1 });
-                context.Departments.Add(new Models.Department() { ID = 4, Name = "Marchandising", TaxID = 1 });
-                context.Departments.Add(new Models.Department() { ID = 4, Name = "Toys", TaxID = 1 });
-                context.Departments.Add(new Models.Department() { ID = 4, Name = "Other", TaxID = 1 });
+                context.Departments.Add(new Models.Department() { ID = 5, Name = "Imported", TaxID = 2 });
+                context.Departments.Add(new Models.Department() { ID = 6, Name = "Music", TaxID = 1 });
+                context.Departments.Add(new Models.Department() { ID = 7, Name = "Marchandising", TaxID = 1 });
+                context.Departments.Add(new Models.Department() { ID = 8, Name = "Toys", TaxID = 1 });
+                context.Departments.Add(new Models.Department() { ID = 9, Name = "Other", TaxID = 1 });
                 await context.SaveChangesAsync();
             }
         }
