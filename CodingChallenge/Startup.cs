@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.SpaServices.AngularCli;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using CodingChallenge.Repositories.DBContexts.Extensions;
 
 namespace CodingChallenge
 {
@@ -25,6 +26,9 @@ namespace CodingChallenge
             {
                 configuration.RootPath = "ClientApp/dist";
             });
+
+            // Defines the database in memory
+            services.AddInMemoryDbContext<Repositories.DBContexts.LocalDBContext>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
