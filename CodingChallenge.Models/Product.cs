@@ -3,6 +3,9 @@ using System.ComponentModel.DataAnnotations;
 
 namespace CodingChallenge.Models
 {
+    /// <summary>
+    /// Defines the product entity
+    /// </summary>
     public partial class Product : BaseClass
     {
         public Product() : base()
