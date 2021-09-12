@@ -17,6 +17,6 @@ namespace CodingChallenge.Repositories.DBContexts.Extensions
                     {
                         w.Ignore(InMemoryEventId.TransactionIgnoredWarning);
                     }
-                    ), ServiceLifetime.Transient);
+                    ), ServiceLifetime.Singleton);
     }
 }

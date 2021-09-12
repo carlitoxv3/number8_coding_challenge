@@ -5,6 +5,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using CodingChallenge.Repositories.DBContexts.Extensions;
+using CodingChallenge.Services.Extensions;
 
 namespace CodingChallenge
 {
@@ -27,8 +28,9 @@ namespace CodingChallenge
                 configuration.RootPath = "ClientApp/dist";
             });
 
-            // Defines the database in memory
+            // Defines the database in memory as Singleton, only for portable reasons
             services.AddInMemoryDbContext<Repositories.DBContexts.LocalDBContext>();
+            services.AddServicesInjection();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
