@@ -6,6 +6,8 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using CodingChallenge.Repositories.DBContexts.Extensions;
 using CodingChallenge.Services.Extensions;
+using Microsoft.OpenApi.Models;
+using System;
 
 namespace CodingChallenge
 {
@@ -31,6 +33,23 @@ namespace CodingChallenge
             // Defines the database in memory as Singleton, only for portable reasons
             services.AddInMemoryDbContext<Repositories.DBContexts.LocalDBContext>();
             services.AddServicesInjection();
+
+            services.AddSwaggerGen(options =>
+            {
+                var groupName = "v1";
+
+                options.SwaggerDoc(groupName, new OpenApiInfo
+                {
+                    Title = $"Number8 Coding Challenge Sales Taxes {groupName}",
+                    Version = groupName,
+                    Description = "Sales Taxes",
+                    Contact = new OpenApiContact
+                    {
+                        Name = "Number8",
+                        Email = string.Empty,
+                    }
+                });
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -50,6 +69,11 @@ namespace CodingChallenge
             {
                 app.UseSpaStaticFiles();
             }
+            app.UseSwagger();
+            app.UseSwaggerUI(c =>
+            {
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "Sales Taxes API V1");
+            });
 
             app.UseRouting();
 
@@ -60,18 +84,18 @@ namespace CodingChallenge
                     pattern: "{controller}/{action=Index}/{id?}");
             });
 
-            app.UseSpa(spa =>
-            {
-                // To learn more about options for serving an Angular SPA from ASP.NET Core,
-                // see https://go.microsoft.com/fwlink/?linkid=864501
+            //app.UseSpa(spa =>
+            //{
+            //    // To learn more about options for serving an Angular SPA from ASP.NET Core,
+            //    // see https://go.microsoft.com/fwlink/?linkid=864501
 
-                spa.Options.SourcePath = "ClientApp";
+            //    spa.Options.SourcePath = "ClientApp";
 
-                if (env.IsDevelopment())
-                {
-                    spa.UseAngularCliServer(npmScript: "start");
-                }
-            });
+            //    if (env.IsDevelopment())
+            //    {
+            //        spa.UseAngularCliServer(npmScript: "start");
+            //    }
+            //});
         }
     }
 }
