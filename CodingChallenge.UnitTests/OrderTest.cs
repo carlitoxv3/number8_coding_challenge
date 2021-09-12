@@ -57,7 +57,7 @@ namespace CodingChallenge.UnitTests.Orders
                     DepartmentID = 2
                 });
 
-                var orderResponse = await orderService.SaveAndCalculate(orderRequestDTO);
+                var orderResponse = await orderService.Calculate(orderRequestDTO);
 
                 Assert.Equal(42.32, orderResponse.Total);
                 Assert.Equal(1.50, orderResponse.SalesTaxes);
@@ -97,7 +97,7 @@ namespace CodingChallenge.UnitTests.Orders
                     DepartmentID = 2
                 });
 
-                var orderResponse = await orderService.SaveAndCalculate(orderRequestDTO);
+                var orderResponse = await orderService.Calculate(orderRequestDTO);
 
                 Assert.Equal(65.15, orderResponse.Total);
                 Assert.Equal(7.65, orderResponse.SalesTaxes);
@@ -165,7 +165,7 @@ namespace CodingChallenge.UnitTests.Orders
                     DepartmentID = 2
                 });
 
-                var orderResponse = await orderService.SaveAndCalculate(orderRequestDTO);
+                var orderResponse = await orderService.Calculate(orderRequestDTO);
 
                 Assert.Equal(86.53, orderResponse.Total);
                 Assert.Equal(7.30, orderResponse.SalesTaxes);
@@ -197,7 +197,7 @@ namespace CodingChallenge.UnitTests.Orders
                 });
 
 
-                await Assert.ThrowsAsync<MissingMemberException>(async () => await orderService.SaveAndCalculate(orderRequestDTO));
+                await Assert.ThrowsAsync<MissingMemberException>(async () => await orderService.Calculate(orderRequestDTO));
 
             }
         }
@@ -215,7 +215,7 @@ namespace CodingChallenge.UnitTests.Orders
                 Models.DTOs.Request.OrderRequestDTO orderRequestDTO = new Models.DTOs.Request.OrderRequestDTO();
                 orderRequestDTO.Products = new List<ProductRequestDTO>();
 
-                await Assert.ThrowsAsync<InvalidOperationException>(async () => await orderService.SaveAndCalculate(orderRequestDTO));
+                await Assert.ThrowsAsync<InvalidOperationException>(async () => await orderService.Calculate(orderRequestDTO));
 
             }
         }
@@ -267,7 +267,7 @@ namespace CodingChallenge.UnitTests.Orders
                     DepartmentID = 2
                 });
 
-                var orderResponse = await orderService.SaveAndCalculate(orderRequestDTO);
+                var orderResponse = await orderService.Calculate(orderRequestDTO);
 
                 Assert.Equal(65.54, orderResponse.Total);
                 Assert.Equal(5.3, orderResponse.SalesTaxes);

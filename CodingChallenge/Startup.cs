@@ -8,6 +8,8 @@ using CodingChallenge.Repositories.DBContexts.Extensions;
 using CodingChallenge.Services.Extensions;
 using Microsoft.OpenApi.Models;
 using System;
+using System.IO;
+using System.Reflection;
 
 namespace CodingChallenge
 {
@@ -34,6 +36,7 @@ namespace CodingChallenge
             services.AddInMemoryDbContext<Repositories.DBContexts.LocalDBContext>();
             services.AddServicesInjection();
 
+            // Defines Swagger Configuration
             services.AddSwaggerGen(options =>
             {
                 var groupName = "v1";
@@ -48,7 +51,13 @@ namespace CodingChallenge
                         Name = "Number8",
                         Email = string.Empty,
                     }
+
+
                 });
+
+                var xmlFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
+                var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
+                options.IncludeXmlComments(xmlPath);
             });
         }
 
@@ -69,6 +78,8 @@ namespace CodingChallenge
             {
                 app.UseSpaStaticFiles();
             }
+
+            // Configure Swagger UI
             app.UseSwagger();
             app.UseSwaggerUI(c =>
             {
@@ -83,19 +94,6 @@ namespace CodingChallenge
                     name: "default",
                     pattern: "{controller}/{action=Index}/{id?}");
             });
-
-            //app.UseSpa(spa =>
-            //{
-            //    // To learn more about options for serving an Angular SPA from ASP.NET Core,
-            //    // see https://go.microsoft.com/fwlink/?linkid=864501
-
-            //    spa.Options.SourcePath = "ClientApp";
-
-            //    if (env.IsDevelopment())
-            //    {
-            //        spa.UseAngularCliServer(npmScript: "start");
-            //    }
-            //});
         }
     }
 }

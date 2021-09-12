@@ -23,7 +23,7 @@ namespace CodingChallenge
                 IServiceProvider services = scope.ServiceProvider;
                 try
                 {
-                    ///Set the seed initializer
+                    // Set the seed initializer
                     Repositories.DBContexts.LocalDBContext context = services.GetRequiredService<Repositories.DBContexts.LocalDBContext>();
                     //Execute seed initializer
                     Repositories.DBContexts.Seeds.SeedInitializer.Initialize(context).Wait();

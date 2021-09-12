@@ -2,6 +2,7 @@
 using CodingChallenge.Services.Interfaces;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -18,12 +19,29 @@ namespace CodingChallenge.Services
             _localDBContext = localDBContext;
         }
 
-        public async Task<IEnumerable<Department>> GetAll()
+        public async Task<IEnumerable<Models.DTOs.Response.DepartmentResponseDTO>> GetAll()
         {
             try
             {
+                IEnumerable<Models.DTOs.Response.DepartmentResponseDTO> responseDTOs = new List<Models.DTOs.Response.DepartmentResponseDTO>();
                 _departmentRepository = new Repositories.DepartmentRepository(this._localDBContext);
-                return await _departmentRepository.GetAll();
+                var departments = await _departmentRepository.GetAll();
+
+                if (departments != null && departments.Any())
+                {
+                    responseDTOs = departments.Select(d => new Models.DTOs.Response.DepartmentResponseDTO()
+                    {
+                        ID = d.ID,
+                        Name = d.Name,
+                        Taxes = d.Taxes.Select(t => new Models.DTOs.Response.TaxResponseDTO()
+                        {
+                            ID = t.ID,
+                            ForImported = t.ForImported,
+                            Value = t.Value
+                        }).ToList()
+                    });
+                }
+                return responseDTOs;
             }
             catch (Exception ex)
             {

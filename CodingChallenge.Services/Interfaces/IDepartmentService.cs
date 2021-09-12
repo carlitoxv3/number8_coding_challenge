@@ -8,7 +8,7 @@ namespace CodingChallenge.Services.Interfaces
     public interface IDepartmentService
     {
 
-        Task<IEnumerable<Models.Department>> GetAll();
+        Task<IEnumerable<Models.DTOs.Response.DepartmentResponseDTO>> GetAll();
         Task<Models.Department> GetByID(int id);
     }
 }

@@ -7,7 +7,11 @@ namespace CodingChallenge.Services.Interfaces
 {
     public interface IOrderService
     {
-
-        Task<Models.DTOs.Response.OrderSummaryResponseDTO> SaveAndCalculate(Models.DTOs.Request.OrderRequestDTO orderRequestDTO);
+        /// <summary>
+        /// Receive an order with items and process them to get the current totals
+        /// </summary>
+        /// <param name="orderRequestDTO">Order to be proccess</param>
+        /// <returns>Return the totals and taxes that was applied</returns>
+        Task<Models.DTOs.Response.OrderSummaryResponseDTO> Calculate(Models.DTOs.Request.OrderRequestDTO orderRequestDTO);
     }
 }

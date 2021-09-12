@@ -29,9 +29,9 @@ namespace CodingChallenge.UnitTests
 
             try
             {
-                ///Set the seed initializer
+                // Set the seed initializer
                 Repositories.DBContexts.LocalDBContext context = ServiceProvider.GetRequiredService<Repositories.DBContexts.LocalDBContext>();
-                //Execute seed initializer
+                // Execute seed initializer
                 Repositories.DBContexts.Seeds.SeedInitializer.Initialize(context).Wait();
             }
             catch (Exception ex)
@@ -43,6 +43,7 @@ namespace CodingChallenge.UnitTests
 
         public void Dispose()
         {
+            // Dispose all disposable properties
             Client.Dispose();
             _testServer.Dispose();
         }
