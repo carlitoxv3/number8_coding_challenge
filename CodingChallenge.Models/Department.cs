@@ -16,12 +16,8 @@ namespace CodingChallenge.Models
         public string Name { get; set; }
 
         /// <summary>
-        /// Returns Tax ID
-        /// </summary>
-        public int? TaxID { get; set; }
-        /// <summary>
         /// Returns Department Tax associated
         /// </summary>
-        public virtual Tax Tax { get; set; }
+        public virtual IList<Tax> Taxes { get; set; }
     }
 }

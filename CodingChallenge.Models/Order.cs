@@ -14,6 +14,6 @@ namespace CodingChallenge.Models
         {
         }
 
-        public IList<Product> Products { get; set; }
+        public IEnumerable<Product> Products { get; set; }
     }
 }

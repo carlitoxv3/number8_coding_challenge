@@ -13,7 +13,9 @@ namespace CodingChallenge.Models
         {
         }
 
-        public float Value { get; set; }
+        public bool ForImported { get; set; } = false;
+
+        public double Value { get; set; }
 
     }
 }
