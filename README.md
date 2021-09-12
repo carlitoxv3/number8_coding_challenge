@@ -1,5 +1,5 @@
 # number8_coding_challenge
-Coding challenge solution in NetCore 3.1
+Coding challenge *Sales Taxes* solution in NetCore 3.1
 
 ## Description of solution
 
