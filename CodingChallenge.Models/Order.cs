@@ -12,6 +12,7 @@ namespace CodingChallenge.Models
     {
         public Order() : base()
         {
+            Products = new List<Product>();
         }
 
         public IEnumerable<Product> Products { get; set; }
