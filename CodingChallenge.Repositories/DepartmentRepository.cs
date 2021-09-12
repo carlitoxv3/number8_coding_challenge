@@ -25,12 +25,12 @@ namespace CodingChallenge.Repositories
 
         public async Task<IEnumerable<Department>> GetAll()
         {
-            return await context.Departments.Include(d => d.Tax).ToListAsync();
+            return await context.Departments.Include(d => d.Taxes).ToListAsync();
         }
 
         public async Task<Department> GetByID(int id)
         {
-            return await context.Departments.Include(d => d.Tax).FirstOrDefaultAsync(d => d.ID == id);
+            return await context.Departments.Include(d => d.Taxes).FirstOrDefaultAsync(d => d.ID == id);
         }
 
         public void Insert(Department entity)
