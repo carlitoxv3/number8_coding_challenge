@@ -5,10 +5,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Interfaces\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\CodingChallenge.Repositories\CodingChallenge.Repositories.csproj" />
   </ItemGroup>
 
