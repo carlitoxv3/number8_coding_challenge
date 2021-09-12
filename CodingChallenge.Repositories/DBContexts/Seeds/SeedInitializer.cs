@@ -18,11 +18,14 @@ namespace CodingChallenge.Repositories.DBContexts.Seeds
             //Check if database exists
             context.Database.EnsureCreated();
 
+            var tax1 = new Models.Tax() { ID = 1, Value = 10 };
+            var tax2 = new Models.Tax() { ID = 2, Value = 5, ForImported = true };
+
             ///Check if doesn't have taxes inserted
             if (!context.Taxes.Any())
             {
-                context.Taxes.Add(new Models.Tax() { ID = 1, Value = 10 });
-                context.Taxes.Add(new Models.Tax() { ID = 2, Value = 5 });
+                context.Taxes.Add(tax1);
+                context.Taxes.Add(tax2);
                 await context.SaveChangesAsync();
             }
 
@@ -32,11 +35,7 @@ namespace CodingChallenge.Repositories.DBContexts.Seeds
                 context.Departments.Add(new Models.Department() { ID = 1, Name = "Books" });
                 context.Departments.Add(new Models.Department() { ID = 2, Name = "Food" });
                 context.Departments.Add(new Models.Department() { ID = 3, Name = "Medicals" });
-                context.Departments.Add(new Models.Department() { ID = 5, Name = "Imported", TaxID = 2 });
-                context.Departments.Add(new Models.Department() { ID = 6, Name = "Music", TaxID = 1 });
-                context.Departments.Add(new Models.Department() { ID = 7, Name = "Marchandising", TaxID = 1 });
-                context.Departments.Add(new Models.Department() { ID = 8, Name = "Toys", TaxID = 1 });
-                context.Departments.Add(new Models.Department() { ID = 9, Name = "Other", TaxID = 1 });
+                context.Departments.Add(new Models.Department() { ID = 4, Name = "Other", Taxes = new List<Models.Tax>() { tax1 } });
                 await context.SaveChangesAsync();
             }
         }
