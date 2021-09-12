@@ -31,5 +31,19 @@ namespace CodingChallenge.Services
                 throw ex;
             }
         }
+
+        public async Task<Department> GetByID(int id)
+        {
+            try
+            {
+                _departmentRepository = new Repositories.DepartmentRepository(this._localDBContext);
+                return await _departmentRepository.GetByID(id);
+            }
+            catch (Exception ex)
+            {
+                // TODO: Make log
+                throw ex;
+            }
+        }
     }
 }

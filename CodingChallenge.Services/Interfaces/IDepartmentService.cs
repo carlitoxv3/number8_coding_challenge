@@ -9,5 +9,6 @@ namespace CodingChallenge.Services.Interfaces
     {
 
         Task<IEnumerable<Models.Department>> GetAll();
+        Task<IEnumerable<Models.Department>> GetByID(int id);
     }
 }
