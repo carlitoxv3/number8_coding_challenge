@@ -15,7 +15,7 @@ namespace CodingChallenge.Models.DTOs.Response
 
         public List<ProductSummaryResponseDTO> Products { get; set; }
 
-        public double Total { get { return Products != null && Products.Any() ? Products.Sum(p => p.PriceTotal) : 0; } }
-        public double SalesTaxes { get { return Products != null && Products.Any() ? Products.Sum(p => Math.Round(p.TaxTotal, 2)) : 0; } }
+        public double Total { get { return Products != null && Products.Any() ? Math.Round(Products.Sum(p => p.PriceTotal), 2) : 0; } }
+        public double SalesTaxes { get { return Products != null && Products.Any() ? Math.Round(Products.Sum(p => p.TaxTotal), 2) : 0; } }
     }
 }

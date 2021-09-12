@@ -25,9 +25,7 @@ namespace CodingChallenge.Controllers
             {
                 if(!ModelState.IsValid)
                     return BadRequest(ModelState);
-                // Validate that contains a least one product
-                if (orderRequestDTO.Products == null || (orderRequestDTO.Products != null && !orderRequestDTO.Products.Any()))
-                    return BadRequest("The order must contains almost one product");
+                
 
                 return Ok(await this._orderService.SaveAndCalculate(orderRequestDTO));
             }

@@ -31,6 +31,10 @@ namespace CodingChallenge.Services
             //Avoid to use Automapper beacause is a simple mapping
             try
             {
+                // Validate that contains a least one product
+                if (orderRequestDTO.Products == null || (orderRequestDTO.Products != null && !orderRequestDTO.Products.Any()))
+                    throw new InvalidOperationException("The order must contains almost one product");
+
                 var productosToSave = orderRequestDTO.Products.Select(p => new Models.Product()
                 {
                     DepartmentID = p.DepartmentID,
