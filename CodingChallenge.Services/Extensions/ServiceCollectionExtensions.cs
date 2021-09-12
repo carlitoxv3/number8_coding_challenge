@@ -13,6 +13,8 @@ namespace CodingChallenge.Services.Extensions
         public static IServiceCollection AddServicesInjection(this IServiceCollection services)
         {
             services.AddScoped<Interfaces.IDepartmentService, DepartmentService>();
+            services.AddScoped<Interfaces.ITaxService, TaxService>();
+            services.AddScoped<Interfaces.IOrderService, OrderService>();
             return services;
         }
     }
